@@ -40,7 +40,6 @@ router.post('/amo-webhook', function (req, res, next) {
             json: JSON.stringify({authentication, customers}),
         }
     }).then((result) => {
-        console.log(result.data, result.data.result.new_customernos);
         const orders = [
             {
                 "productno": 1,
@@ -63,7 +62,7 @@ router.post('/amo-webhook', function (req, res, next) {
                 ]
             }
         ];
-
+        console.log(orders[0]);
         const authentication = {
             "username": "Sunil",
             "password": "Sunil153",
