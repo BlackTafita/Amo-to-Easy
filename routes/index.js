@@ -62,7 +62,8 @@ router.post('/amo-webhook', function (req, res, next) {
                     "delivery_date": "0000-00-00"
                 }
             ]
-        };
+        }
+        ];
 
     console.log("CUSTOM FIELDS:", customFields);
     res.end(result);
