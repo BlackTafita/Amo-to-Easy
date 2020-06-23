@@ -62,6 +62,13 @@ router.post('/amo-webhook', function (req, res, next) {
             }
         ];
 
+        const authentication = {
+            "username": "Sunil",
+            "password": "Sunil153",
+            "type": "order_import",
+            "mode": "effect" //change to 'effect' when live
+        };
+
         axios({
             url: 'https://www.mytransport.co.uk/collectsameday/import_json.php',
             method: 'get',
