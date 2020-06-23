@@ -7,8 +7,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/amo-webhook', function (req, res, next) {
-    console.log(req.body);
-    res.json('ok');
+    const result = JSON.stringify(req.body, null, 2);
+    console.log(result);
+    res.end(result);
 });
+
+
 
 module.exports = router;
