@@ -44,7 +44,7 @@ router.post('/amo-webhook', function (req, res, next) {
             {
                 "productno": 1,
                 "customerno": result.data.result.new_customernos[0], //customer import returns 'customerno'. replace this with 'customer no'
-                "vehicleno": findCustomField('Vehicle Type') ? vehicleTypes.findIndex((a) => a.toLowerCase() === findCustomField('Vehicle Type').toLowerCase()) + 1 : 0, //see separate message from Sunil for details
+                "vehicleno": findCustomField('Vehicle Type') ? vehicleTypes.findIndex((a) => a.toLowerCase() === findCustomField('Vehicle Type').toLowerCase()) : 0, //see separate message from Sunil for details
                 "remark_invoice": findCustomField('GCLID'), //replace with 'GCLID'
                 "remark_purchase": req.body.leads.add[0].id, //replace with 'ID' shown at top of response
                 "order_destinations": [
