@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios').default;
+const moment = require('moment');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -51,7 +52,7 @@ router.post('/amo-webhook', function (req, res, next) {
                     {
                         "destinationno": 1,
                         "postal_code": findCustomField('Collection Postcode'), //replace with 'Collection Postcode'
-                        "delivery_date": findCustomField('Collection Date'), //replace with 'Collection Date' but make sure it is formatted correctly
+                        "delivery_date": moment(findCustomField('Collection Date').format()), //replace with 'Collection Date' but make sure it is formatted correctly
                         "delivery_time": findCustomField('Collection Time') //replace with 'Collection Tine'
                     },
                     {
@@ -67,7 +68,7 @@ router.post('/amo-webhook', function (req, res, next) {
             "username": "Sunil",
             "password": "Sunil153",
             "type": "order_import",
-            "mode": "effect" //change to 'effect' when live
+            "mode": "test" //change to 'effect' when live
         };
 
         axios({
