@@ -31,6 +31,7 @@ router.post('/amo-webhook', function (req, res, next) {
             }
         ];
 
+    console.log(customers, customers[0].customer_contacts);
     axios({
         url: 'https://www.mytransport.co.uk/collectsameday/import_json.php',
         method: 'get',
@@ -89,7 +90,7 @@ router.post('/amo-webhook', function (req, res, next) {
     function findCustomField(name) {
         const field = customFields.find((a) => a.name === name);
         if (field && field.values) {
-            return field.values['[0][value]'];
+            return field.values[0].value;
         } else {
             return null;
         }
