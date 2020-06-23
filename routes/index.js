@@ -103,7 +103,7 @@ router.post('/amo-webhook', function (req, res, next) {
                 case "today":
                     return moment().format('yyyy:mm:dd');
                 case "tomorrow":
-                    return moment().add(1, 'day').format('yyyy:mm:dd');
+                    return moment().add(1, 'day').format('yyyy:mm:DD');
                 case 'scheduled later':
                     return '0000-00-00'
             }
