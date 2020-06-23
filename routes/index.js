@@ -32,6 +32,7 @@ router.post('/amo-webhook', function (req, res, next) {
             }
         ];
 
+    console.log(requestBody, requestBody.leads);
     const customFields = requestBody.leads.add[0].custom_fields;
     console.log("CUSTOM FIELDS:", customFields);
     res.end(result);
