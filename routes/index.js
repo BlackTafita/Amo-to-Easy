@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/amo-webhook', function (req, res, next) {
-    console.log(JSON.parse(req.body));
+    console.log(req.body);
     res.json('ok');
 });
 
