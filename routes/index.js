@@ -4,8 +4,8 @@ const axios = require('axios').default;
 const moment = require('moment');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function (req, res, next) {
+    res.render('index', {title: 'Express'});
 });
 
 router.post('/amo-webhook', function (req, res, next) {
@@ -19,18 +19,18 @@ router.post('/amo-webhook', function (req, res, next) {
         "mode": "effect" //change to 'effect' when live
     };
 
-    const customers =  [
-            {
-                "company_name": 'TEST ' + req.body.leads.add[0].name, //replace with 'Name'
-                "customer_contacts": [
-                    {
-                        "contact_name": req.body.leads.add[0].name, //replace with 'Name'
-                        "mobile": findCustomField('Phone'), //replace with 'Phone'
-                        "email": findCustomField('Email') //replace with 'Email'
-                    }
-                ]
-            }
-        ];
+    const customers = [
+        {
+            "company_name": 'TEST ' + req.body.leads.add[0].name, //replace with 'Name'
+            "customer_contacts": [
+                {
+                    "contact_name": req.body.leads.add[0].name, //replace with 'Name'
+                    "mobile": findCustomField('Phone'), //replace with 'Phone'
+                    "email": findCustomField('Email') //replace with 'Email'
+                }
+            ]
+        }
+    ];
 
     console.log(customers, customers[0].customer_contacts);
     axios({
@@ -98,18 +98,20 @@ router.post('/amo-webhook', function (req, res, next) {
     }
 
     function setDate(value) {
-        switch (value.toLowerCase()) {
-            case "today":
-                return moment().format('yyyy:mm:dd');
-            case "tomorrow":
-                return moment().add(1, 'day').format('yyyy:mm:dd');
-            case 'scheduler later':
-                return '0000:00;00'
+        if (value) {
+            switch (value.toLowerCase()) {
+                case "today":
+                    return moment().format('yyyy:mm:dd');
+                case "tomorrow":
+                    return moment().add(1, 'day').format('yyyy:mm:dd');
+                case 'scheduler later':
+                    return '0000-00-00'
+            }
+        } else {
+            return '0000-00-00'
         }
     }
 });
-
-
 
 
 module.exports = router;
