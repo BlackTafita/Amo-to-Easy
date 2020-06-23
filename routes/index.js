@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/amo-webhook', function (req, res, next) {
     const customFields = req.body.leads.add[0].custom_fields;
-    const venicleTypes = ['I dont know?', 'small van', 'midi van', 'large van', 'extra large van', 'hatchback van', 'small van', 'motor bike', 'lorry'];
+    const venicleTypes = ['I dont know?', 'small van', 'midi van', 'large van', 'extra large van', 'hatchback van', 'small van', 'motorbike', 'lorry'];
 
     const authentication = {
         "username": "Sunil",
@@ -40,11 +40,12 @@ router.post('/amo-webhook', function (req, res, next) {
             json: JSON.stringify({authentication, customers}),
         }
     }).then((result) => {
+        console.log(findCustomField('Venicle Type'));
         const orders = [
             {
                 "productno": 1,
                 "customerno": result.data.result.new_customernos[0], //customer import returns 'customerno'. replace this with 'customer no'
-                "vehicleno": findCustomField('Vehicle Type') ? venicleTypes.findIndex((a) => a.toLowerCase() === findCustomField('Venicle Type').toLowerCase()) + 1 : 0, //see separate message from Sunil for details
+                "vehicleno": findCustomField('Vehicle Type') ? venicleTypes.findIndex((a) => a.toLowerCase() === findCustomField('Vehicle Type').toLowerCase()) + 1 : 0, //see separate message from Sunil for details
                 "remark_invoice": findCustomField('GCLID'), //replace with 'GCLID'
                 "remark_purchase": req.body.leads.add[0].id, //replace with 'ID' shown at top of response
                 "order_destinations": [
