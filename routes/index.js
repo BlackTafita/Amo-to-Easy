@@ -10,7 +10,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/amo-webhook', function (req, res, next) {
     const customFields = req.body.leads.add[0].custom_fields;
-    const venicleTypes = ['I don`t know?', 'small van', 'midi van', 'large van', 'extra large van', 'hatchback van', 'small van', 'motorbike', 'lorry'];
+    const venicleTypes = ['I don`t know?', 'small van', 'midi van', 'large van', 'extra large van', 'hatchback van', 'na', 'motorbike', 'lorry'];
 
     const authentication = {
         "username": "Sunil",
