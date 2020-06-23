@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/amo-webhook', function (req, res, next) {
     const requestBody = qs.parse(Object.keys(req.body)[0]);
-    console.log(req.body, requestBody, JSON.parse(req.body));
+    console.log(req.body, requestBody, JSON.stringify(req.body));
 
 
     const authentication = {
