@@ -40,7 +40,6 @@ router.post('/amo-webhook', function (req, res, next) {
             json: JSON.stringify({authentication, customers}),
         }
     }).then((result) => {
-        console.log(findCustomField('Venicle Type'));
         const orders = [
             {
                 "productno": 1,
