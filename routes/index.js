@@ -67,7 +67,7 @@ router.post('/amo-webhook', function (req, res, next) {
             "username": "Sunil",
             "password": "Sunil153",
             "type": "order_import",
-            "mode": "test" //change to 'effect' when live
+            "mode": "effect" //change to 'effect' when live
         };
 
         axios({
