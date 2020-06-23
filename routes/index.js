@@ -76,7 +76,7 @@ router.post('/amo-webhook', function (req, res, next) {
                 json: JSON.stringify({authentication, orders}),
             }
         }).then((result) => {
-            console.log(result);
+            console.log(result.data);
             res.end()
         }).catch();
     }).catch(err => {
