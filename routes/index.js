@@ -9,9 +9,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/amo-webhook', function (req, res, next) {
     const requestBody = qs.parse(Object.keys(req.body)[0]);
-    console.log(req.body, JSON.stringify(req.body), requestBody);
+    console.log(requestBody);
 
-    res.end(result);
 
     const authentication = {
         "username": "Sunil",
@@ -32,6 +31,10 @@ router.post('/amo-webhook', function (req, res, next) {
                 ]
             }
         ];
+
+    const customFields = requestBody.leads.add[0].custom_fields;
+    console.log("CUSTOM FIELDS:" customFields);
+    res.end(result);
 });
 
 
