@@ -52,7 +52,7 @@ router.post('/amo-webhook', function (req, res, next) {
                     {
                         "destinationno": 1,
                         "postal_code": findCustomField('Collection Postcode'), //replace with 'Collection Postcode'
-                        "delivery_date": moment(findCustomField('Collection Date').format()), //replace with 'Collection Date' but make sure it is formatted correctly
+                        "delivery_date": setDate(findCustomField('Collection Date')), //replace with 'Collection Date' but make sure it is formatted correctly
                         "delivery_time": findCustomField('Collection Time') //replace with 'Collection Tine'
                     },
                     {
@@ -94,6 +94,17 @@ router.post('/amo-webhook', function (req, res, next) {
             return field.values[0].value;
         } else {
             return null;
+        }
+    }
+
+    function setDate(value) {
+        switch (value.toLowerCase()) {
+            case "today":
+                return moment().format('yyyy:mm:dd');
+            case "tomorrow":
+                return moment().add(1, 'day').format('yyyy:mm:dd');
+            case 'scheduler later':
+                return '0000:00;00'
         }
     }
 });
