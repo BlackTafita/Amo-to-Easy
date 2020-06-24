@@ -21,7 +21,7 @@ router.post('/amo-webhook', function (req, res, next) {
 
     const customers = [
         {
-            "company_name": 'TEST ' + req.body.leads.add[0].name, //replace with 'Name'
+            "company_name": req.body.leads.add[0].name, //replace with 'Name'
             "customer_contacts": [
                 {
                     "contact_name": req.body.leads.add[0].name, //replace with 'Name'
